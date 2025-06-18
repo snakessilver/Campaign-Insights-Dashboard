@@ -1,0 +1,43 @@
+# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: 
+
+# dataset = pandas.DataFrame(Platform, CTR (%))
+# dataset = dataset.drop_duplicates()
+
+# Paste or type your script code here:
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sort by CTR
+sorted_data = dataset.sort_values(by='CTR (%)', ascending=False)
+
+# Use dark background
+plt.style.use('dark_background')
+
+# Create figure
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot bar chart
+sns.barplot(data=sorted_data, x='Platform', y='CTR (%)', palette='Set2', ax=ax)
+
+# Title in bold
+ax.set_title('CTR (%) by Platform', fontsize=16, fontweight='bold', color='white')
+
+# Axis labels
+ax.set_xlabel('Platform', fontsize=14, color='white')
+ax.set_ylabel('CTR (%)', fontsize=14, color='white')
+
+# Tick labels
+ax.tick_params(axis='x', labelsize=12, colors='white', labelrotation=45)
+ax.tick_params(axis='y', labelsize=12, colors='white')
+
+# Remove all borders (spines)
+for spine in ax.spines.values():
+    spine.set_visible(False)
+
+# Set black background
+fig.patch.set_facecolor('black')
+ax.set_facecolor('black')
+
+plt.tight_layout()
+plt.show()
